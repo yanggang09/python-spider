@@ -9,12 +9,21 @@ import sys
 reload(sys)
 sys.setdefaultencoding('UTF-8')
 
+
+def write_txt(filename, filestr):
+    f0 = open(filename, 'ab+')
+    f0.write(filestr)
+    f0.close()
+
 class ghYuBao(scrapy.Spider):
     name = "yubao"
     start_urls = [ 'http://www.178448.com/fjzt-1.html' ]
-    for a in range(1,50):
+    for a in range(1,2):
         yb_url = 'http://www.178448.com/fjzt-1.html?'+ 'page=' + str(a)
         start_urls.append(yb_url)
+
+
+
 
     def parse(self, response):
         yb = SpiderGhItem()
@@ -33,10 +42,6 @@ class ghYuBao(scrapy.Spider):
 
 
         for b,c,d,e,f in zip(yb_name,yb_count,yb_successrate,yb_stock,yb_cause):
-        # for c in yb_count:
-        #     print b
-            # b1,c1,d1,e1,f1 = str(b),str(c),str(d),str(e),str(f)
-            # print (b1,c1,d1,e1,f1)
            yb['Name'] = b
            yb['Count'] = c
            yb['Successrate'] = d
@@ -47,25 +52,11 @@ class ghYuBao(scrapy.Spider):
            # yb['Successrate'] = d.encode('utf-8')
            # yb['Stock'] = e.encode('utf-8')
            # yb['Cause'] = f.encode('utf-8')
-           # str1 = "%s:  %s %s %s %s \n"%(yb['Name'],yb['Count'],yb['Successrate'],yb['Stock'],yb['Cause'])
-           str1 = "%s\n" % yb['Name']
-           str2 = "%s\n"% yb['Count']
-           str3 = "%s\n" % yb['Successrate']
-           str4 = "%s\n" % yb['Stock']
-           str5 = "%s\n" % yb['Cause']
-           f0 = open(text_01,'ab+')
-           f0.write(str1)
-           f0.close()
-           f1 = open(text_02, 'ab+')
-           f1.write(str2)
-           f1.close()
-           f2 = open(text_03, 'ab+')
-           f2.write(str3)
-           f2.close()
-           f3 = open(text_04, 'ab+')
-           f3.write(str4)
-           f3.close()
-           f4 = open(text_05, 'ab+')
-           f4.write(str5)
-           f4.close()
+           str1 = "%s %s %s %s %s \n"%(yb['Name'],yb['Count'],yb['Successrate'],yb['Stock'],yb['Cause'])
+           # str1 = "%s\n" % yb['Name']
+           # str2 = "%s\n"% yb['Count']
+           # str3 = "%s\n" % yb['Successrate']
+           # str4 = "%s\n" % yb['Stock']
+           # str5 = "%s\n" % yb['Cause']
+           write_txt(text_01,str1)
            # yield yb
