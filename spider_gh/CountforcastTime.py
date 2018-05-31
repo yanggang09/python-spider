@@ -6,6 +6,7 @@ f1_path =  'C:\\Users\\Administrator\\PycharmProjects\\spider_gh\\Stock.txt'
 f2_path = 'C:\\Users\\Administrator\\PycharmProjects\\spider_gh\\final.txt'
 
 name_list = []
+dict_01 = {}
 #将数据读取出来进行统计并排序
 f1 = open(f1_path, 'ab+' )
 lines = f1.readlines()
