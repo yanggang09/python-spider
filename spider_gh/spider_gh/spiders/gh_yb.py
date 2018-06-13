@@ -18,7 +18,7 @@ def write_txt(filename, filestr):
 class ghYuBao(scrapy.Spider):
     name = "yubao"
     start_urls = [ 'http://www.178448.com/fjzt-1.html' ]
-    for a in range(1,2):
+    for a in range(1,50):
         yb_url = 'http://www.178448.com/fjzt-1.html?'+ 'page=' + str(a)
         start_urls.append(yb_url)
 
@@ -52,11 +52,12 @@ class ghYuBao(scrapy.Spider):
            # yb['Successrate'] = d.encode('utf-8')
            # yb['Stock'] = e.encode('utf-8')
            # yb['Cause'] = f.encode('utf-8')
-           str1 = "%s %s %s %s %s \n"%(yb['Name'],yb['Count'],yb['Successrate'],yb['Stock'],yb['Cause'])
-           # str1 = "%s\n" % yb['Name']
+           #str1 = "%s %s %s %s %s \n"%(yb['Name'],yb['Count'],yb['Successrate'],yb['Stock'],yb['Cause'])
+           str1 = "%s %s\n"%(yb['Name'],yb['Stock'])
            # str2 = "%s\n"% yb['Count']
            # str3 = "%s\n" % yb['Successrate']
-           # str4 = "%s\n" % yb['Stock']
+           str4 = "%s\n" % yb['Stock']
            # str5 = "%s\n" % yb['Cause']
            write_txt(text_01,str1)
+           write_txt(text_04, str4)
            # yield yb

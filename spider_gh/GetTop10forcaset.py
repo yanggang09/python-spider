@@ -1,7 +1,7 @@
 #coding=utf-8
 import os
-file_path = "C:\\Users\\Administrator\\PycharmProjects\\spider_gh\\Name.txt"
-f2_path = 'C:\\Users\\Administrator\\PycharmProjects\\spider_gh\\final.txt'
+file_path = "C:\\Users\\Administrator\\gitcode\\python-spider\\spider_gh\\Name.txt"
+f2_path = 'C:\\Users\\Administrator\\gitcode\\python-spider\\spider_gh\\final.txt'
 
 
 UN01 = '\u4e09\u4e25\u4e09\u5b9e'#三严三实
