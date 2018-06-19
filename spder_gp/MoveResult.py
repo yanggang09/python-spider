@@ -14,5 +14,7 @@ def movefile(filename):
     os.remove(filename)
 
 if __name__ == "__main__":
+    data1 = name + 'StockInfo.xls'
     movefile('GUpiaoinfo.txt')
     movefile('GUpiaoinfo01.txt')
+    movefile(data1)
