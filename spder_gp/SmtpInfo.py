@@ -6,13 +6,14 @@ from email.mime.multipart import MIMEMultipart
 from email.utils import formataddr
 import time
 import os
-my_sender = '*****@126.com'  # 发件人邮箱账号
+my_sender = '*******@126.com'  # 发件人邮箱账号
 my_pass = '******'  # 发件人邮箱密码
-my_user = '****@qq.com'  # 收件人邮箱账号，我这边发送给自己
+my_user = '******@qq.com'  # 收件人邮箱账号，我这边发送给自己
 file_path = os.getcwd()
 name = time.strftime("%Y%m%d%H",time.localtime(time.time()))
 file_path02 = file_path + '\\' + 'Data' + name + '\\' + 'GUpiaoinfo.txt'
 excel_name = file_path + '\\' + 'Data' + name + '\\' + name + 'StockInfo.xls'
+email_name = name + 'StockInfo.xls'
 list_00 = []
 f08 = open(file_path02,'ab+')
 for lines in f08.readlines():
@@ -34,7 +35,7 @@ def mail():
         msg.attach(MIMEText(msg_html,'html','utf-8'))
         att1 = MIMEText(open(excel_name,'rb').read(),'base64','utf-8')
         att1["Content-Type"] = 'application/octet-stream'
-        att1["Content-Disposition"] = 'attachment; filename=' + 'test1.xls'
+        att1["Content-Disposition"] = 'attachment; filename=' + email_name
         msg.attach(att1)
 
         server = smtplib.SMTP_SSL("smtp.126.com", 465)  # 发件人邮箱中的SMTP服务器，端口是25
