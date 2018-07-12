@@ -19,27 +19,39 @@ class Denlu():
         """Create Bottom Frame"""
         self.bottom = tk.LabelFrame(self.root)
         self.bottom.grid(row=1,column=0,padx=20,pady=3)
-        self.bottom_lab0 = tk.Label(self.bottom,text='用户名:',font=('Tempus Sans ITC',15))
-        self.bottom_lab0.grid(row=0,column=0,padx=20,pady=3,sticky='e')
-        self.bottom_lab1 = tk.Label(self.bottom,text='密    码:',font=('Tempus Sans ITC',15))
-        self.bottom_lab1.grid(row=1,column=0,padx=20,pady=3,sticky='e')
+        # self.bottom_cbtn_int_0 = IntVar()
+        # self.bottom_cbtn_0 = tk.Checkbutton(self.bottom,variable=self.bottom_cbtn_int_0,text='记住密码',font=('Tempus Sans ITC',10))
+        # self.bottom_cbtn_0.grid(row=2,column=1,padx=20,pady=3,sticky='w')
+        # self.bottom_btn_0 = tk.Button(self.bottom,text='登陆',relief=RIDGE,bd=4,width=10\
+        #                                   ,font=('Tempus Sans ITC',12),command=self.print_nima)#你可以添加其他的函数等
+        # self.bottom_btn_0.grid(row=3,column=1,padx=20,pady=3)
         self.bottom_entry_var_0 = StringVar()
         self.bottom_entry_0 = tk.Entry(self.bottom,textvariable=self.bottom_entry_var_0)
-        self.bottom_entry_0.grid(row=0,column=1,padx=20,pady=3)
-        self.bottom_entry_var_1 = StringVar()
-        self.bottom_entry_1 = tk.Entry(self.bottom,textvariable=self.bottom_entry_var_1,show='*')
-        self.bottom_entry_1.grid(row=1,column=1,padx=20,pady=3)
-        self.bottom_cbtn_int_0 = IntVar()
-        self.bottom_cbtn_0 = tk.Checkbutton(self.bottom,variable=self.bottom_cbtn_int_0,text='记住密码',font=('Tempus Sans ITC',10))
-        self.bottom_cbtn_0.grid(row=2,column=1,padx=20,pady=3,sticky='w')
-        self.bottom_btn_0 = tk.Button(self.bottom,text='登陆',relief=RIDGE,bd=4,width=10\
-                                          ,font=('Tempus Sans ITC',12),command=self.print_nima)#你可以添加其他的函数等
-        self.bottom_btn_0.grid(row=3,column=1,padx=20,pady=3)
+        self.bottom_entry_0.grid(row=0,column=0,padx=20,pady=3)
+        self.bottom_btn_0 = tk.Button(self.bottom,text='确认',relief=RIDGE,bd=4,width=10,font=('Tempus Sans ITC',12),command=self.print_nima)
+        self.bottom_btn_0.grid(row=0, column=1, padx=20, pady=3)
+        # self.bottom_entry_var_1 = StringVar()
+
     def print_nima(self):
         """btn callback"""
-        print self.bottom_entry_var_0.get()
-        print self.bottom_entry_var_1.get()
-        print self.bottom_cbtn_int_0.get()
+
+        self.bottom_entry_1 = tk.Label(self.bottom, text=self.test01())
+        self.bottom_entry_1.grid(row=1, column=0, padx=20, pady=20)
+        #print self.bottom_entry_var_0.get()
+
+    def test01(self):
+        # text="这是一个测试"
+        data={'0':'测试1','1':'测试2','3':'测试3'}
+        entry01 = self.bottom_entry_var_0.get()
+        if entry01 in data.keys():
+            return data[entry01]
+        else:
+            text = "输入错误"
+            return text
+
+
+
+
 
 def fun_fuck():
     if __name__ == '__main__':
@@ -90,5 +102,6 @@ if __name__ == '__main__':
     '''main loop '''
     root = tk.Tk()
     root.title('2018最新电影下载器')
+    root.geometry("400x200")
     Denlu(root)
     root.mainloop()
